@@ -20,8 +20,9 @@ func newLogFunc(prefix string) func(string, ...interface{}) {
 	}
 
 	if prefix == "app" {
-		log.Println("prefix", prefix)
-		return logPkg.Printf
+		return func(format string, v ...interface{}) {
+			fmt.Print(format)
+		}
 	}
 
 	prefix = fmt.Sprintf("%-11s", prefix)
