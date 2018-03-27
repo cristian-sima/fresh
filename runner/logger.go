@@ -20,6 +20,10 @@ func newLogFunc(prefix string) func(string, ...interface{}) {
 	}
 	prefix = fmt.Sprintf("%-11s", prefix)
 
+	if prefix == "app" {
+		return logPkg.Printf
+	}
+
 	return func(format string, v ...interface{}) {
 		now := time.Now()
 		timeString := fmt.Sprintf("%d:%d:%02d", now.Hour(), now.Minute(), now.Second())
