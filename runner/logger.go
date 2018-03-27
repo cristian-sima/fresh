@@ -20,6 +20,7 @@ func newLogFunc(prefix string) func(string, ...interface{}) {
 	}
 
 	if prefix == "app" {
+		log.Println("prefix", prefix)
 		return logPkg.Printf
 	}
 
